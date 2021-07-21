@@ -1,50 +1,64 @@
-button{
-  margin-top: 35px;
-  padding: 15px 40px;
-  border: none;
-  border-radius: 3px;
-  font-size: 20px;
-  background-color: #ac67ece8;
-  cursor: pointer;
-  color: white;
+body{
+  margin-left: 30px ;
 }
 
-input{
-  width: 100%;
+button{
   border: none;
-  background-color: rgb(228, 245, 245);
-  border-bottom: 1px solid rgb(98, 51, 160);
+  background-color: lightsteelblue;
+  border-radius: 3px;
+  font-size: 18px;
+  margin-top: 30px;
+  padding: 15px ;
+  cursor: pointer;
+  color: black;
+}
+
+/*.submit-btn{
+ width: 20%;
+}*/
+
+input{
   border-radius: 3px;
   margin: 15px 0px;
   padding: 10px 10px;
   font-size: 16px;
+  width: 100%;
+  border: none;
+  background-color: rgb(228, 245, 245);
+ 
 }
+
+.list{
+  position: absolute;
+  margin: 40px;
+  left: 7rem;
+}
+.count{
+  padding-left: 70px;
+  position: absolute;
+  top: 7rem;
+}
+
+
 input:focus{
   outline: none;
-  background-color: #d2b5ee2a;
 }
 
 .form{
-  font-family: 'Ubuntu', sans-serif;
-  background-color: rgb(228, 245, 245);
-  box-shadow: 1px 2px 5px  rgb(61, 59, 61);
-  align-items: center;
-  text-align: center;
   border:none;
   border-radius: 10px;
   padding: 50px 100px;
   margin: 50px 400px;
   margin-bottom: 100px;
+  font-family: 'Ubuntu', sans-serif;
+  background-color: hotpink;
+  box-shadow: 1px 2px 5px  rgb(61, 59, 61);
+  align-items: center;
+ 
 }
 
 label{
-  font-size: 25px;
   font-family: inherit;
-  color: rgba(76, 41, 121, 0.788);
-}
-
-
-button:active{
-  background-color: lightpink;
-  transform: scale(0.9);
+  font-size: 20px;
+  
 }
