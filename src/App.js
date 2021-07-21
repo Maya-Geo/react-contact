@@ -1,39 +1,62 @@
-import React, { Component } from 'react';
-import Contact from './Components/Contact';
-import ContactForm from './Components/ContactForm';
-import './App.css'
+import React, { Component } from "react";
+import ContactForm from "./Components/ContactForm";
+import ContactsList from "./Components/ContactsList";
+import "./App.css";
 
-class App extends Component {
-  constructor(props){
+export default class App extends Component {
+  constructor(props) {
     super(props);
-    this.state ={ contacts :[]}
+    this.state = {
+      contact: [
+        {
+       name: "Maya",
+       number: "050000000",
+       location: "Anagkazo",
+       id: "8973723",
+      }
+    ],
+    };
   }
-
-  
   handleAddContact = (newContact) => {
-    this.setState({ 
-        contacts: [...this.state.contacts,newContact] 
-    })
-  }
+    newContact.id = Math.random().toString();
+    this.setState({
+      contact: [...this.state.contact, newContact],
+    });
+  };
 
+  handleDeleteContact = (contactsId) => {
+    const newArr = this.state.contact.filter((contacts) => {
+      return contacts.id !== contactsId;
+    });
+    this.setState({ contact: newArr });
+  };
+  handleEditContact=(updatedContacts)=>{
+  this.setState({
+    contact: this.state.contact.map((contacts) =>
+    contacts.id === updatedContacts.id ? updatedContacts : contacts 
+    ),
+  });
+  };
 
   render() {
-   
-    const contacts = this.state.contacts.map((contacts,index) =>{
-            return(
-              <Contact contact={contacts} index={index}/>
-            )
-    })
-
-
-
     return (
-      <>
-         <ContactForm addContact={this.handleAddContact}/>
-         {contacts}
-      </>
+      <div className="list">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6"><ContactForm 
+            addContact={this.handleAddContact} 
+            /></div>
+            <div className="count col-md-4">
+            <h1>All Contacts</h1>
+            <ContactsList 
+            contact={this.state.contact} 
+            handleDeleteContact={this.handleDeleteContact}
+            handleEditContact={this.handleEditContact}
+            />
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }
-
-export default App;

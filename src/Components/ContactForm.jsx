@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
+
 
 class ContactForm extends Component {
     constructor(props){
@@ -10,30 +12,30 @@ class ContactForm extends Component {
         }
     }
 
-    
+     
   
     handleChange = (e)=>{
         this.setState({ [e.target.name] : e.target.value})
     };
 
-    handleSubmit = (e)=>{
-        e.preventDefault();
 
+    handleSubmit = (e)=> {
+        e.preventDefault()
         this.props.addContact(this.state)
-
-
         this.setState({
-            name : '',
-            number : '',
-            location : ''
+            name : "",
+            number : "",
+            location: "",
         })
 
+        
+       
         
     }
 
     render() {
         return (
-            <div className="form" style ={{textAlign: "center"}}>
+            <div className="form">
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor="name">Name</label><br/>
                     <input type="text" name="name" value={this.state.name} 
@@ -43,8 +45,8 @@ class ContactForm extends Component {
                     onChange={this.handleChange} placeholder="Number"/><br/>
                     <label htmlFor="location">Location</label><br/>
                     <input type="text" name="location" value={this.state.location} 
-                    onChange={this.handleChange} placeholder="Your Location"/><br/>
-                    <button type="submit">Add Contact</button>
+                    onChange={this.handleChange} placeholder="Your Location"/>
+                     <Button variant="primary" type="submit">Add To Contact</Button>
                 </form>
             </div>
         );
