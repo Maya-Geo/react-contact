@@ -2,10 +2,19 @@ const initialState = {
     contacts: [
         {
           name: "Maya",
-          phoneNumber: "0050000000",
+          number: "050000000",
           location: "Anagkazo",
-          id:  "8973723",
-        }
+          id: Math.random().toString()
+        },
+
+        {
+            name: "Maya",
+            number: "050000000",
+            location: "Anagkazo",
+            id: Math.random().toString()
+          }
+
+        
        
       ]
 }
