@@ -4,36 +4,24 @@ import ContactsList from "./Components/ContactsList";
 import "./App.css";
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      contact: [
-        {
-       name: "Maya",
-       number: "050000000",
-       location: "Anagkazo",
-       id: "8973723",
-      }
-    ],
-    };
-  }
+  
   handleAddContact = (newContact) => {
     newContact.id = Math.random().toString();
     this.setState({
-      contact: [...this.state.contact, newContact],
+      contacts: [...this.state.contacts, newContact],
     });
   };
 
-  handleDeleteContact = (contactsId) => {
-    const newArr = this.state.contact.filter((contacts) => {
-      return contacts.id !== contactsId;
+  handleDeleteContact = (contactId) => {
+    const newArr = this.state.contact.filter((contact) => {
+      return contact.id !== contactId;
     });
-    this.setState({ contact: newArr });
+    this.setState({ contacts: newArr });
   };
-  handleEditContact=(updatedContacts)=>{
+  handleEditContact=(updatedContact)=>{
   this.setState({
-    contact: this.state.contact.map((contacts) =>
-    contacts.id === updatedContacts.id ? updatedContacts : contacts 
+    contacts: this.state.contacts.map((contact) =>
+    contact.id === updatedContact.id ? updatedContact : contact
     ),
   });
   };
@@ -49,9 +37,7 @@ export default class App extends Component {
             <div className="count col-md-4">
             <h1>All Contacts</h1>
             <ContactsList 
-            contact={this.state.contact} 
-            handleDeleteContact={this.handleDeleteContact}
-            handleEditContact={this.handleEditContact}
+
             />
             </div>
           </div>
