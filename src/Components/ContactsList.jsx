@@ -1,17 +1,29 @@
 import React from "react";
-import Contact from "./Contact";
+import {connect} from 'react-redux';
+import Contacts from "./Contacts";
 
-export default function ContactsList( {contact, handleDeleteContact, handleEditContact}) {
-  const contactsList = contact.map((contact) => {
+
+const ContactsList = ( {contacts, deleteContact, editContact}) => {
+  const contactsList = contacts.map((contact) => {
     return (
-    <Contact 
+    <Contacts
     contact={contact} 
-    handleDeleteContact={handleDeleteContact}
-    handleEditContact={handleEditContact}
+    deleteContact={deleteContact}
+    editContact={editContact}
     />
         );
   });
+
   return (
       <div>{contactsList}</div>
   )
 }
+ 
+
+const mapStateToProps= (state) =>{
+   return{
+     contacts: state.contacts,
+   }
+}
+
+export default connect (mapStateToProps)(ContactsList);
