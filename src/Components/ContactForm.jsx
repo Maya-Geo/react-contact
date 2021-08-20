@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import { Button } from 'react-bootstrap';
+import {addContact} from "../Actions/ActionContact";
 
 
 class ContactForm extends Component {
@@ -11,17 +13,20 @@ class ContactForm extends Component {
             loction : '',
         }
     }
-
+ 
      
   
     handleChange = (e)=>{
         this.setState({ [e.target.name] : e.target.value})
+        const target = e.target;
+        const value =target.value;
+        const name =target.name;
     };
 
 
     handleSubmit = (e)=> {
         e.preventDefault()
-        this.props.addContact(this.state)
+        this.props.addNewContact(this.state)
         this.setState({
             name : "",
             number : "",
@@ -38,11 +43,13 @@ class ContactForm extends Component {
             <div className="form">
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor="name">Name</label><br/>
-                    <input type="text" name="name" value={this.state.name} 
+                    <input type="text" name="name"  value={this.state.name} 
                     placeholder="Your Name" onChange={this.handleChange}/><br/>
-                    <label htmlFor="number">Phone Number</label><br/>
-                    <input type="tel" name="number" value={this.state.number} 
+                    
+                    <label htmlFor="number">Number</label><br/>
+                    <input type="text" name="number" value={this.state.number} 
                     onChange={this.handleChange} placeholder="Number"/><br/>
+
                     <label htmlFor="location">Location</label><br/>
                     <input type="text" name="location" value={this.state.location} 
                     onChange={this.handleChange} placeholder="Your Location"/>
@@ -53,4 +60,9 @@ class ContactForm extends Component {
     }
 }
 
-export default ContactForm;
+  const mapDispatchToProps = {
+      addNewContact : addContact
+
+  }
+
+export default connect(null, mapDispatchToProps)(ContactForm) ;
