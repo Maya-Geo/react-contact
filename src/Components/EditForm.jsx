@@ -9,8 +9,8 @@ class EditForm extends Component {
         super(props);
         this.state={
                     Name: props.contact.Name || '',
-                    Phone: props.contact.Phone||'',
-                    Location: props.contact.Location||'',
+                     Phone: props.contact.Phone||'',
+                     Location: props.contact.Location||'',
                     id: props.contact.id || '',
                 }
     };
