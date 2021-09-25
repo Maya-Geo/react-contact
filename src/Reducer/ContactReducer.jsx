@@ -39,6 +39,10 @@ const contactReducer = (state = initialState, action) => {
             }); 
             return {...state, contacts: contactSaved};
 
+            case'SET_ALL_CONTACTS':
+            console.log(action.payload)
+            return {...state, contacts: action.payload};
+
 
 
 
