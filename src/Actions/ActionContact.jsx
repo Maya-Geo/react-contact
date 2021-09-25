@@ -6,12 +6,16 @@ export const DELETE_CONTACT ="DELETE_CONTACT"
 export const addContact=(contact)=>{
     contact.id = Math.random().toString()
 
+
+
+
     return (dispatch,state,{getFirestore})=>{
          const db = getFirestore();
          db.collection("contacts").add(contact).then(
             (docs)=>{
                 console.log(docs)
             })
+
 
          .catch((err) => console.log(err));
 
@@ -38,3 +42,24 @@ export const deleteContact = (contact_id) => {
         payload: contact_id
     }
 }
+
+
+export const getAllContacts = () => {
+    return(dispatch, state, {getFirestore}) =>{
+      getFirestore().collection("contacts").onSnapshot((snapshot)=>{
+        let contacts= [];
+        snapshot.forEach((doc) =>{
+          contacts.push(doc.data())
+        })
+        
+      dispatch({
+        type: "SET_ALL_CONTACTS",
+        payload: contacts
+      })
+      },(error)=>{});
+  
+    };
+  };
+
+
+
