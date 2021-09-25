@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Button } from 'react-bootstrap';
-import {addContact} from "../Actions/ActionContact";
+import {addContact, getAllContacts} from "../Actions/ActionContact";
 
 
 class ContactForm extends Component {
@@ -13,6 +13,8 @@ class ContactForm extends Component {
             loction : '',
         }
     }
+
+
  
      
   
@@ -31,12 +33,14 @@ class ContactForm extends Component {
             name : "",
             number : "",
             location: "",
-        })
-
-        
-       
+        })    
         
     }
+
+
+    componentDidMount(){
+        this.props.getAllContacts()
+      };
 
     render() {
         return (
@@ -61,7 +65,8 @@ class ContactForm extends Component {
 }
 
   const mapDispatchToProps = {
-      addNewContact : addContact
+      addNewContact : addContact,
+      getAllContacts: getAllContacts
 
   }
 
