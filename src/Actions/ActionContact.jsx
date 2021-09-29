@@ -34,7 +34,7 @@ export const editContact = (updatedContact) => {
         getFirestore().collection("users").doc(updatedContact.id).set(updatedContact)
         .then(
             ()=> {
-                console.log("Successfuly updated")
+                console.log("updated")
             }
         )
         .catch(
